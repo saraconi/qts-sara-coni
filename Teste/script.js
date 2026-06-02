@@ -82,7 +82,8 @@ btnSalvar.onclick = async e => {
           salario: sSalario.value
         })
       });
-    } else {
+    } 
+    else {
       // CREATE
       await fetch(API_BASE, {
         method: 'POST',
