@@ -1,3 +1,7 @@
+if (localStorage.getItem('autenticado') !== 'true') {
+    window.location.href = 'login.html';
+}
+
 const modal = document.querySelector('.modal-container')
 const tbody = document.querySelector('tbody')
 const sNome = document.querySelector('#m-nome')

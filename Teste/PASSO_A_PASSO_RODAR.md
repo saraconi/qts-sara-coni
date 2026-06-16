@@ -18,6 +18,7 @@ http://localhost/phpmyadmin → Nova → Nome: crud_funcionarios → Criar
 ```
 **SQL tab → Cole e Execute:**
 ```sql
+CREATE DATABASE crud_funcionarios;
 USE crud_funcionarios;
 
 CREATE TABLE funcionarios (
@@ -26,6 +27,12 @@ CREATE TABLE funcionarios (
     funcao VARCHAR(100) NOT NULL,
     salario DECIMAL(10,2) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario VARCHAR(50) NOT NULL UNIQUE,
+    senha VARCHAR(255) NOT NULL
 );
 ```
 

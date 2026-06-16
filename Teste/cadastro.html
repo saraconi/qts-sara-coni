@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro - Sistema</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container" style="width: 350px; height: auto; padding: 30px; display: flex; flex-direction: column; align-items: center;">
+    
+    <div class="header" style="margin-bottom: 20px; width: 100%; justify-content: center;">
+      <span>Novo Cadastro</span>
+    </div>
+
+    <div class="modal" style="width: 100%; padding: 0;">
+      <form id="cadastroForm" style="width: 100%;">
+        <label for="cUsuario">Escolha um Usuário</label>
+        <input id="cUsuario" type="text" required style="border: 1px solid #ccc; border-radius: 5px;" />
+
+        <label for="cSenha">Crie uma Senha</label>
+        <input id="cSenha" type="password" required style="border: 1px solid #ccc; border-radius: 5px;" />
+
+        <label for="cConfirmaSenha">Confirme a Senha</label>
+        <input id="cConfirmaSenha" type="password" required style="border: 1px solid #ccc; border-radius: 5px;" />
+
+        <button type="submit" id="btnCadastrar">Cadastrar</button>
+      </form>
+    </div>
+    
+    <div style="margin-top: 15px; font-size: 14px;">
+        <a href="login.html" style="color: rgb(57, 57, 226); text-decoration: none;">Já tem uma conta? Faça Login</a>
+    </div>
+
+  </div>
+  <script src="cadastro.js"></script>
+</body>
+</html>

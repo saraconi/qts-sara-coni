@@ -15,6 +15,62 @@ const dbConfig = {
 
 const db = mysql.createPool(dbConfig);
 
+// GET /api/cadastro
+app.post('/api/cadastro', async (req, res) => {
+    try {
+        const { usuario, senha } = req.body;
+        
+        if (!usuario || !senha) {
+            return res.status(400).json({ error: 'Usuário e senha são obrigatórios' });
+        }
+        
+        // Verifica se o nome de usuário já está em uso
+        const [existente] = await db.execute(
+            'SELECT * FROM usuarios WHERE usuario = ?', 
+            [usuario]
+        );
+
+        if (existente.length > 0) {
+            return res.status(409).json({ error: 'Este nome de usuário já existe. Escolha outro.' });
+        }
+
+        // Insere o novo usuário no banco de dados
+        await db.execute(
+            'INSERT INTO usuarios (usuario, senha) VALUES (?, ?)',
+            [usuario, senha]
+        );
+
+        res.json({ success: true, message: 'Usuário cadastrado com sucesso!' });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+// GET /api/login
+app.post('/api/login', async (req, res) => {
+    try {
+        const { usuario, senha } = req.body;
+        
+        if (!usuario || !senha) {
+            return res.status(400).json({ error: 'Usuário e senha são obrigatórios' });
+        }
+        
+        // Verifica no banco de dados
+        const [rows] = await db.execute(
+            'SELECT * FROM usuarios WHERE usuario = ? AND senha = ?', 
+            [usuario, senha]
+        );
+
+        if (rows.length > 0) {
+            res.json({ success: true, message: 'Login bem-sucedido' });
+        } else {
+            res.status(401).json({ error: 'Usuário ou senha incorretos' });
+        }
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
 // GET /api/funcionarios
 app.get('/api/funcionarios', async (req, res) => {
     try {
