@@ -1,5 +1,5 @@
 // situa em qual package ou “pacote” está a classe 
-Package factory; 
+package factory; 
 // faz as importações de classes necessárias para o funcionamento do programa 
 import java.sql.Connection; // conexão SQL para Java 
 import java.sql.DriverManager; // driver de conexão SQL para Java 
@@ -9,7 +9,7 @@ public class ConnectionFactory {
     public Connection getConnection() { 
         try { 
             return 
-DriverManager.getConnection("jdbc:mysql://localhost/projetojava","root",""); 
+        DriverManager.getConnection("jdbc:mysql://localhost/projetojava","root",""); 
         } 
         catch(SQLException excecao) { 
             throw new RuntimeException(excecao); 

@@ -3,6 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package gui;
+import modelo.Usuario; 
+import dao.UsuarioDAO; 
+import javax.swing.JOptionPane; 
 
 /**
  *
@@ -63,6 +66,11 @@ public class UsuarioGUI extends javax.swing.JFrame {
 
         jButton1.setBackground(new java.awt.Color(204, 204, 204));
         jButton1.setText("Cadastrar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(204, 204, 204));
         jButton2.setText("Limpar");
@@ -186,6 +194,29 @@ public class UsuarioGUI extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
               System.exit(0); 
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // instanciando a classe Usuario do pacote modelo e criando seu objeto usuarios 
+        Usuario usuarios = new Usuario(); 
+        usuarios.setNome(jTextField1.getText()); 
+        usuarios.setCpf(jTextField2.getText()); 
+        usuarios.setEmail(jTextField3.getText()); 
+        usuarios.setTelefone(jTextField4.getText()); 
+
+        // fazendo a validação dos dados 
+        if ((jTextField1.getText().isEmpty()) || (jTextField2.getText().isEmpty()) || 
+        (jTextField3.getText().isEmpty()) || (jTextField4.getText().isEmpty())) { 
+           JOptionPane.showMessageDialog(null, "Os campos não podem retornar vazios"); 
+        } 
+        else { 
+
+            // instanciando a classe UsuarioDAO do pacote dao e criando seu objeto dao 
+            UsuarioDAO dao = new UsuarioDAO(); 
+            dao.adiciona(usuarios); 
+            JOptionPane.showMessageDialog(null, "Usuário "+jTextField1.getText()+" inserido com sucesso! "); 
+        } 
+
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

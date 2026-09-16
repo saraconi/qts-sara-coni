@@ -10,4 +10,12 @@
         <maven.compiler.release>17</maven.compiler.release>
         <exec.mainClass>atividade.minhaaplicacao.MinhaAplicacao</exec.mainClass>
     </properties>
+    
+    <dependencies>
+        <dependency>
+        <groupId>com.mysql</groupId>
+        <artifactId>mysql-connector-j</artifactId>
+        <version>8.3.0</version>
+    </dependency>
+    </dependencies>
 </project>

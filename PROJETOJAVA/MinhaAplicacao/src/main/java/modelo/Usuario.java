@@ -9,7 +9,6 @@ public String getCpf() {
 return cpf; 
 } 
 public void setCpf(String cpf) { 
-Aula DS 28/05/2025 Professor Thiago/Sueli 
         this.cpf = cpf; 
     } 
  
